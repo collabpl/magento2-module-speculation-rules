@@ -31,6 +31,6 @@ In order to check the PageSpeed impact of the module please refer to [Official G
 
 ## Installation details
 ```bash
-composer collab/module-speculation-rules
+composer req collab/module-speculation-rules
 bin/magento setup:upgrade
 ```
