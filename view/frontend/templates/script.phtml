@@ -1,0 +1,35 @@
+<?php
+/**
+ * @category  Collab
+ * @package   Collab\SpeculationRules
+ * @author    Marcin Jędrzejewski <m.jedrzejewski@collab.pl>
+ * @copyright 2024 Collab
+ * @license   MIT
+ */
+
+/**
+ * @var Template $block
+ * @var SecureHtmlRenderer $secureRenderer
+ * @var Escaper $escaper
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+$viewModel = $block->getData('speculation_rules_view_model');
+$specRules = $viewModel->getSpecRules();
+?>
+
+<?php
+$scriptString = <<<script
+if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+    const specScript = document.createElement('script');
+    specScript.type = 'speculationrules';
+    specRules = {$specRules};
+    specScript.textContent = JSON.stringify(specRules);
+    document.body.append(specScript);
+}
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', ['type' => 'text/javascript'], $scriptString, false) ?>

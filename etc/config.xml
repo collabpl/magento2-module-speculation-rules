@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Collab SpeculationRules for Magento
+ *
+ * @author      Marcin Jędrzejewski <m.jedrzejewski@collab.pl>
+ * @copyright   Copyright 2024 Collab
+ * @license     MIT
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <collab_speculationrules>
+            <general>
+                <enabled>0</enabled>
+                <spec_rules><![CDATA[{
+    'prerender': [{
+        'where': {
+            'and': [
+                {'selector_matches': [
+                    'a.level-top',
+                    'li.level1 > a',
+                    '.breadcrumbs li.item > a',
+                    '.item .product-item-photo',
+                    'a.product-item-photo',
+                    'a[data-link-type]'
+                ]},
+                {'not': {'selector_matches': '.skip-prerender'}},
+                {'not': {'href_matches': [
+                    'checkout',
+                    'customer',
+                    'catalogsearch',
+                    'wishlist'
+                ]}}
+            ]
+        },
+        'eagerness': 'moderate'
+    }]
+}]]></spec_rules>
+            </general>
+        </collab_speculationrules>
+    </default>
+</config>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Collab SpeculationRules for Magento
+ *
+ * @author      Marcin Jędrzejewski <m.jedrzejewski@collab.pl>
+ * @copyright   Copyright 2024 Collab
+ * @license     MIT
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="collab" translate="label" sortOrder="150">
+            <label>Collab Extensions</label>
+        </tab>
+        <section id="collab_speculationrules" translate="label" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Speculation Rules</label>
+            <tab>collab</tab>
+            <resource>Collab_SpeculationRules::config</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="spec_rules" translate="label comment" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Spec Rules</label>
+                    <comment><![CDATA[
+                        JSON object defining rules. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/speculationrules#syntax" target="_blank">Syntax Docs</a>.
+                    ]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

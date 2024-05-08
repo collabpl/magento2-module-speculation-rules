@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Collab SpeculationRules for Magento
+ *
+ * @author      Marcin Jędrzejewski <m.jedrzejewski@collab.pl>
+ * @copyright   Copyright 2024 Collab
+ * @license     MIT
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Collab\SpeculationRules\Api\Data\ConfigInterface"
+                type="Collab\SpeculationRules\Model\Data\Config" />
+</config>

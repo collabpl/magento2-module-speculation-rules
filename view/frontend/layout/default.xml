@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Collab SpeculationRules for Magento
+ *
+ * @author      Marcin Jędrzejewski <m.jedrzejewski@collab.pl>
+ * @copyright   Copyright 2024 Collab
+ * @license     MIT
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="before.body.end">
+        <block name="collab_speculationrules"
+               template="Collab_SpeculationRules::script.phtml"
+               ifconfig="collab_speculationrules/general/enabled">
+            <arguments>
+                <argument name="speculation_rules_view_model" xsi:type="object">
+                    Collab\SpeculationRules\ViewModel\SpeculationRules
+                </argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</page>
